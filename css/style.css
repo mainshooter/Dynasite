@@ -1,0 +1,464 @@
+/*******************************************************************
+    Style Demo Site
+ *******************************************************************/
+
+
+/*-----------------------------------------------------------------
+    Basic style
+  -----------------------------------------------------------------*/
+
+body {
+    color: #666;
+    background-color: #eee;
+    font-family: verdana;
+    font-size: 0.9em;
+    margin: 3%;
+}
+
+
+p {
+    line-height: 1.5em;
+}
+
+#header {
+    background-color: #999;
+    color: white;
+}
+
+#main-nav {
+    background-color: #ccc;
+}
+
+#content-container {
+    background: #fff;
+}
+
+#main-content {
+    background: #fff;
+}
+
+#sidebar {
+    background: #fff;
+}
+
+#footer {
+    background-color: #999;
+    color: white;
+}
+
+#footer p {
+    margin: 0;
+    padding: 0;
+}
+
+.site-title {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 0px 0px 10px #000;
+}
+
+
+/*-----------------------------------------------------------------
+    Float
+  -----------------------------------------------------------------*/
+
+p img {
+    float: right;
+    margin-left: 1em;
+}
+
+
+/*-----------------------------------------------------------------
+    Page Layout - Positioning
+  -----------------------------------------------------------------*/
+
+#header {
+    text-align: center;
+    line-height: 175px;
+    height: 175px;
+}
+
+#content-container {
+    overflow: auto;
+}
+
+#main-content {
+    width: 59%;
+    float: left;
+    padding: 3%;
+}
+
+#sidebar {
+    width: 29%;
+    float: right;
+    padding: 3%;
+}
+
+#footer {
+    clear: both;
+    padding: 2% 3%;
+}
+
+
+/*-----------------------------------------------------------------
+    Navigation
+  -----------------------------------------------------------------*/
+
+#main-nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+#main-nav li {
+    display: inline;
+    list-style-type: none;
+}
+
+#main-nav li a {
+    display: inline-block;
+    color: #fff;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 1.2em;
+    line-height: 3em;
+    text-decoration: none;
+    text-shadow: 0px 0px 5px #000;
+}
+
+#main-nav li a:hover {
+    background-color: #333;
+}
+
+#main-nav li.active a {
+    color: #666;
+    text-shadow: none;
+}
+
+
+/*-----------------------------------------------------------------
+    Float Background Height Fixes
+  -----------------------------------------------------------------*/
+
+/* first clear all background-colors (set to transparent) */
+.sidebar-layout #content-container,
+.sidebar-layout #main-content,
+.sidebar-layout #sidebar {
+    background-color: transparent;
+}
+
+/* Fix 1: Background gradient */
+
+.sidebar-layout #content-container {
+    background-image: -webkit-linear-gradient(left, #fff, #fff 65%, #eee 65%, #eee 100%);
+    background-image: -moz-linear-gradient(left, #fff, #fff 65%, #eee 65%, #eee 100%);
+    background-image: -ms-linear-gradient(left, #fff, #fff 65%, #eee 65%, #eee 100%);
+    background-image: -o-linear-gradient(left, #fff, #fff 65%, #eee 65%, #eee 100%);
+    background-image: linear-gradient(left, #fff, #fff 65%, #eee 65%, #eee 100%);
+}
+
+/* Fix 2: Pseudo-element ::before */
+/*
+.sidebar-layout #content-container {
+    position: relative;
+}
+
+.sidebar-layout #main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    left: 0;
+    width: 65%;
+    background-color: #fff;
+}
+
+.sidebar-layout #sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    left: 65%;
+    width: 35%;
+    background-color: #eee;
+}
+*/
+
+
+/*-----------------------------------------------------------------
+    Background Images
+  -----------------------------------------------------------------*/
+
+body {
+    background-image: url("../images/bg.png");
+    /*background-repeat: repeat;*/
+    
+    /* Multiple backgrounds */
+    background-image: url("../images/bg-2.png"), url("../images/bg.png");
+    background-repeat: no-repeat, repeat;
+}
+
+#header {
+    background-image: url("../images/city-1920-175.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    
+    /* short-hand */
+    background: #333 url("../images/city-1920-175.jpg") no-repeat 50% 50%;
+}
+
+
+
+/*-----------------------------------------------------------------
+    Rounded corners
+  -----------------------------------------------------------------*/
+
+#header {
+    border-radius: 10px 10px 0 0;
+}
+
+#footer {
+    border-radius: 0 0 10px 10px;
+}
+
+p img {
+    border-radius: 10px;
+}
+
+
+/*-----------------------------------------------------------------
+    Fonts
+  -----------------------------------------------------------------*/
+
+@font-face {
+    font-family: "Florante";
+    /* *** Cross browser support *** */
+    src: url("../fonts/FLORLRG.eot"); /* *** IE9 *** */
+    src: url("../fonts/FLORLRG.eot?#iefix") format("embedded-opentype"), /* *** IE6-8 *** */
+         url("../fonts/FLORLRG.woff") format("woff"), /* *** Modern Browsers *** */
+         url("../fonts/FLORLRG.ttf") format("truetype"), /* *** Safari, Android, iOS *** */
+         url("../fonts/FLORLRG.svg#florante_at_lauraregular") format("svg"); /* *** Legacy iOS *** */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: "Lobster";
+  src: url("../fonts/lobster.woff2") format("woff2");
+}
+
+body {
+    font-family: "Lobster";
+}
+
+h1, h2, h3 {
+    font-family: "Florante";
+}
+
+
+/*-----------------------------------------------------------------
+    Table
+  -----------------------------------------------------------------*/
+
+table {
+    width: 100%;
+    font-size: 1.3em;
+    border: #666 1px solid;
+    border-spacing: 0.3em;
+}
+
+table caption {
+    font-size: 1.2em;
+    line-height: 2em;
+}
+
+col.number {
+    background-color: #eee;
+}
+
+col.amount {
+    background-color: #eee;
+}
+
+th.amount,
+td.amount {
+    text-align: right;
+}
+
+th {
+    background-color: #ccc;
+    padding: 0.2em 0.5em;
+}
+
+td {
+    padding: 0.2em 0.5em;
+}
+
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+
+/*-----------------------------------------------------------------
+    About Page
+  -----------------------------------------------------------------*/
+
+.about-page #main-content {
+    width: auto;
+    float: none;
+}
+
+/* better to add a class like "no-sidebar-layout" to the body element */
+
+.no-sidebar-layout #main-content {
+    width: auto;
+    float: none;
+}
+
+.no-sidebar-layout #sidebar {
+    display: none; /* hide sidebar in case it exists */
+}
+
+
+/*-----------------------------------------------------------------
+    Form
+  -----------------------------------------------------------------*/
+
+.contact-form fieldset {
+    padding: 0;
+    border: 0; /* no border */
+}
+
+.contact-form label {
+    display: block;
+}
+
+.contact-form input[type="text"],
+.contact-form select,
+.contact-form textarea,
+.contact-form input[type="submit"] {
+    width: 30em;
+    padding: 0.1em 0.3em;
+    box-sizing: border-box; /* to make widht (and height) of all form elements equal */
+    font-size: 1.2em;
+    font-family: inherit; /* overwrite browser defaults */
+    border-radius: 10px;
+    border: 2px solid #ccc;
+}
+
+.contact-form input[type="text"],
+.contact-form select {
+    height: 2.5em;
+}
+
+.contact-form textarea {
+    height: 9em;
+}
+
+.contact-form input[type="submit"] {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: #666;
+}
+
+.contact-form input[type="submit"]:focus,
+.contact-form input[type="submit"]:hover {
+    color: #fff;
+    background-color: #666;
+    border-color: #666;
+}
+
+
+/*-----------------------------------------------------------------
+    Gallery 
+  -----------------------------------------------------------------*/
+
+.gallery {
+    padding: 0;
+}
+
+.gallery li {
+    list-style-type: none;
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+
+.gallery figure {
+    background: #999;
+    color: #fff;
+    display: inline-block;
+    margin: 0;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.gallery figure img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.gallery figcaption {
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+/* *** Transform *** */
+
+.gallery figure {
+    transition: transform 1s 0s linear;
+    transform: rotate(5deg);
+}
+
+
+/* *** Transitions *** */
+
+.gallery figure:hover {
+    transition: transform 0.5s 0s linear;
+    transform: rotate(-30deg);
+}
+
+
+/*-----------------------------------------------------------------
+    Media Queries
+  -----------------------------------------------------------------*/
+
+@media only screen and (max-width: 420px) {
+    
+    #main-content {
+        width: auto;
+        float: none;
+    }
+    
+    #sidebar {
+        width: auto;
+        float: none;
+    }
+    
+    #main-nav li a {
+        display: block;
+    }
+    
+}
+
+
+/*-----------------------------------------------------------------
+    Print
+  -----------------------------------------------------------------*/
+
+@media print {
+    
+    #header,
+    #main-nav,
+    #sidebar,
+    #footer {
+        display: none;
+    }
+    
+}
