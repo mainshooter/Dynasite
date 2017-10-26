@@ -57,6 +57,9 @@
 
       else {
         // Presents 404
+        include 'view/header.php';
+          include 'view/404.html';
+        include 'view/footer.php';
       }
     }
 
