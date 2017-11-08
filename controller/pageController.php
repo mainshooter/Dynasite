@@ -2,16 +2,19 @@
   require_once 'model/Page.class.php';
   require_once 'model/Templating.class.php';
   require_once 'model/Blog.class.php';
+  require_once 'model/User.class.php';
 
   class pageController {
     private $Page;
     private $Templating;
     private $Blog;
+    private $User;
 
     public function __construct() {
       $this->Page = new Page();
       $this->Templating = new Templating();
       $this->Blog = new Blog();
+      $this->User = new User();
     }
 
 
@@ -64,6 +67,72 @@
     }
 
     public function blog() {
+
+    }
+
+    /**
+     * Gets a overview of all pages
+     */
+    public function getAllPages() {
+      if ($this->User->checkIfClientHasAcces('admin')) {
+        $allPages = $this->Page->getAllPages();
+
+        if ($allPages != false) {
+          include 'view/page/header.php';
+            include 'view/page/getAllPages/page-overview.php';
+          include 'view/page/footer.php';
+        }
+
+        else {
+          // No pages
+          include 'view/page/header.php';
+            include 'view/page/getAllPages/no-pages.php';
+          include 'view/page/footer.php';
+        }
+      }
+
+      else {
+        // No acces redurect to the login
+        header("Location: " . $GLOBALS['config']['base_url'] . "admin/");
+      }
+    }
+
+    /**
+     * Presents a view where you can edit a page
+     * @param  [array] $pageID [The ID of a page on postition,0]
+     */
+    public function edit($pageID) {
+      if ($this->User->checkIfClientHasAcces('admin')) {
+        if (ISSET($pageID[0])) {
+          $pageContent = $this->Page->getPage($pageID[0]);
+
+          if ($pageContent != false) {
+            // We have result
+            $pageTitle;
+            $pageContent;
+            foreach ($pageContent as $page) {
+              $pageTitle = $page['post-title'];
+              $pageContent = $page['post-content'];
+              break;
+            }
+            include 'view/page/header.php';
+              include 'view/page/edit/editPage.php';
+            include 'view/page/footer.php';
+          }
+
+          else {
+            // Page doesn't exists
+          }
+        }
+
+        else {
+          // Came here by excident
+        }
+      }
+
+      else {
+        // No acces
+      }
 
     }
 

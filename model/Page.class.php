@@ -13,7 +13,7 @@
     }
 
     public function getPageContent($pageTitle) {
-      $sql = "SELECT `post-content` FROM post WHERE `post-title`=:title AND `post-type`=:postType";
+      $sql = "SELECT `post-content`, `post-title` FROM post WHERE `post-title`=:title AND `post-type`=:postType";
       $input = array(
         "title" => $this->Security->checkInput($pageTitle),
         "postType" => 'page'
@@ -27,6 +27,46 @@
           return($page['post-content']);
           break;
         }
+      }
+
+      else {
+        return(false);
+      }
+    }
+
+    /**
+     * gets all pages from the db
+     * @return [arr] [The result from the DB]
+     */
+    public function getAllPages() {
+      $sql = "SELECT * FROM post WHERE `post-type`=:postType";
+      $input = array(
+        "postType" => 'page',
+      );
+
+      $result = $this->DatabaseHandler->readData($sql, $input);
+
+      if (!empty($result)) {
+        return($result);
+      }
+
+      else {
+        return(false);
+      }
+    }
+
+    public function getPage($pageID) {
+      $sql = "SELECT * FROM post WHERE `post-type`=:postType AND postID=:postID LIMIT 1";
+      $input = array(
+        "postType" => $this->Security->checkInput('page'),
+        "postID" => $this->Security->checkInput($pageID)
+      );
+
+      $result = $this->DatabaseHandler->readData($sql, $input);
+
+      if (!empty($result)) {
+        // We have result
+        return($result);
       }
 
       else {
