@@ -20,7 +20,7 @@ ini_set("display_errors", 1);
   $Router->customUrl();
   $Router->parseUrl();
 
-  $Router->setMode('CMS');
+  // $Router->setMode('CMS');
 
   $Router->getController();
   $Router->getMethod();
