@@ -110,6 +110,7 @@
             // We have result
             $pageTitle;
             $pageContent;
+            $pageID = $pageID[0];
             foreach ($pageContent as $page) {
               $pageTitle = $page['post-title'];
               $pageContent = $page['post-content'];
@@ -134,6 +135,28 @@
         // No acces
       }
 
+    }
+
+    public function updatePage($pageID) {
+      if ($this->User->checkIfClientHasAcces('admin')) {
+        if (ISSET($pageID[0])) {
+          // we have a page ID
+          $pageID = $pageID[0];
+          $pageTitle = $_POST['pageTitle'];
+          $pageContent = $_POST['pageContent'];
+
+          $this->Page->updatePage($pageID, $pageTitle, $pageContent);
+          header("Location: " . $GLOBALS['config']['base_url'] . "page/edit/" . $pageID);
+        }
+
+        else {
+          // No page ID
+        }
+      }
+
+      else {
+        // No acces
+      }
     }
 
   }

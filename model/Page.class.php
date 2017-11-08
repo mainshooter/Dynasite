@@ -73,6 +73,22 @@
         return(false);
       }
     }
+
+    /**
+     * Updates a page
+     * @param  [INT] $pageID      [The ID of the page]
+     * @param  [string] $pageTitle   [The title of the page]
+     * @param  [string] $pageContent [The content of the page]
+     */
+    public function updatePage($pageID, $pageTitle, $pageContent) {
+      $sql = "UPDATE `post` SET `post-title`=:postTitle, `post-content`=:postContent WHERE `postID`=:postID";
+      $input = array(
+        "postTitle" => $this->Security->checkInput($pageTitle),
+        "postContent" => $this->Security->checkInput($pageContent),
+        "postID" => $this->Security->checkInput($pageID),
+      );
+      $this->DatabaseHandler->UpdateData($sql, $input);
+    }
   }
 
 
