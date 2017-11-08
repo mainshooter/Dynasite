@@ -53,25 +53,22 @@ require_once 'model/Security.class.php';
     * @param  [string] $userMail     [The mail adress of the client we want to register]
     * @param  [string] $userPassword [The password of the client we want to register NOT hassed]
     * @param  [string] $role         [The role we want to give to the client]
-    * @return [string]               [The activation key for a client to send it in the mail for a activation]
+    * @return [boolean]               [On succes we return true]
     */
    public function registerUser($userMail, $userPassword, $role) {
      $hashedPassword = $this->hashPassword($this->Security->checkInput($userPassword));
 
      if ($this->checkIfEmailExists($userMail) === false) {
        // Mail adress doens't exists
-       $activationKey = $this->generateActivationKey();
-       $sql = "INSERT INTO user (`mail` , `password`, `role`, `activationkey`, `activated`) VALUES (:mail, :password, :role, :activationKey, :activated)";
+       $sql = "INSERT INTO user (`mail` , `password`, `role`) VALUES (:mail, :password, :role)";
        $input = array(
          "mail" => $this->Security->checkInput($userMail),
          "password" => $this->Security->checkInput($hashedPassword),
          "role" => $this->Security->checkInput($role),
-         "activationKey" => $activationKey,
-         "activated" => 0
        );
 
        $this->DatabaseHandler->CreateData($sql, $input);
-       return($activationKey);
+       return(true);
      }
 
      else {
