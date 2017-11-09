@@ -1,4 +1,5 @@
 <div class="darker-background">
+  <a href="<?php echo $GLOBALS['config']['base_url'] ?>page/createPage/"><button type="button">Nieuwe pagina</button></a>
   <table>
     <tr>
       <th>Pagina titel</th>
@@ -12,7 +13,7 @@
             <td>" . $pages['post-title'] . "</td>
             <td>
               <a href='" . $GLOBALS['config']['base_url'] . "page/edit/" . $pages['postID'] . "'>Bewerken</a>
-              <a href='" . $GLOBALS['config']['base_url'] . "page/delete/" . $pages['postID'] . "'>Verwijderen</a>
+              <a href='" . $GLOBALS['config']['base_url'] . "page/deletePage/" . $pages['postID'] . "'>Verwijderen</a>
             </td>
           </tr>
         ";

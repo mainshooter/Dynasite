@@ -100,8 +100,8 @@
 
       if (!empty($result)) {
         // we have result
-        foreach ($result as $title => $value) {
-          return($value);
+        foreach ($result as $title) {
+          return($title['post-title']);
         }
       }
 

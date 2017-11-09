@@ -159,6 +159,54 @@
       }
     }
 
+    /**
+     * Presents a confirm to the client to delete a page
+     * @param  [type] $pageID [description]
+     */
+    public function deletePage($pageID) {
+      if ($this->User->checkIfClientHasAcces('admin')) {
+        if (ISSET($pageID[0])) {
+          $pageID = $pageID[0];
+          $pageTitle = $this->Page->getPageTitle($pageID);
+
+          if ($pageTitle != false) {
+            // We have a page
+            include 'view/page/header.php';
+              include 'view/page/deletePage/deleteConfirm.php';
+            include 'view/page/footer.php';
+          }
+
+          else {
+            // No page
+          }
+        }
+
+        else {
+          // Client came here by excident
+        }
+      }
+
+      else {
+        // No acces
+      }
+    }
+
+    /**
+     * Presents a view to the client to add a new page
+     */
+    public function createPage() {
+      if ($this->User->checkIfClientHasAcces('admin')) {
+        include 'view/page/header.php';
+          include 'view/page/createPage/createPage.php';
+        include 'view/page/footer.php';
+      }
+
+      else {
+        // No acces
+        header("Location: " . $GLOBALS['config']['base_url'] . "admin/");
+      }
+    }
+
   }
 
 
