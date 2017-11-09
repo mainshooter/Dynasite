@@ -89,6 +89,27 @@
       );
       $this->DatabaseHandler->UpdateData($sql, $input);
     }
+
+    public function getPageTitle($pageID) {
+      $sql = "SELECT `post-title` FROM `post` WHERE `postID`=:postID LIMIT 1";
+      $input = array(
+        "postID" => $this->Security->checkInput($pageID),
+      );
+
+      $result = $this->DatabaseHandler->readData($sql, $input);
+
+      if (!empty($result)) {
+        // we have result
+        foreach ($result as $title => $value) {
+          return($value);
+        }
+      }
+
+      else {
+        // No result
+        return(false);
+      }
+    }
   }
 
 
