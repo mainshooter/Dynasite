@@ -110,6 +110,10 @@
         return(false);
       }
     }
+
+    public function createPage() {
+      $sql = "INSERT INTO `post` (`post-type`, `post-title`, `post-content`) VALUES ('page', :pageTitle, :pageContent)";
+    }
   }
 
 

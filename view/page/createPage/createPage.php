@@ -7,7 +7,7 @@
   <label>Content</label>
   <textarea name="pageContent"></textarea>
   <br>
-  <input type="submit" name="editPage" value="Opslaan">
+  <input type="submit" name="createPage" value="Opslaan">
 </form>
 <script src="<?php echo $GLOBALS['config']['base_url'] ?>view/js/tinymce/tinymce.min.js"></script>
 <script>tinymce.init({ selector:'textarea' });</script>

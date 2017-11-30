@@ -66,9 +66,6 @@
       }
     }
 
-    public function blog() {
-
-    }
 
     /**
      * Gets a overview of all pages
@@ -137,6 +134,10 @@
 
     }
 
+    /**
+     * Updates a page to the db
+     * @param  [array] $pageID [The ID of the page]
+     */
     public function updatePage($pageID) {
       if ($this->User->checkIfClientHasAcces('admin')) {
         if (ISSET($pageID[0])) {
@@ -161,7 +162,7 @@
 
     /**
      * Presents a confirm to the client to delete a page
-     * @param  [type] $pageID [description]
+     * @param  [array] $pageID [The ID of the page]
      */
     public function deletePage($pageID) {
       if ($this->User->checkIfClientHasAcces('admin')) {
@@ -204,6 +205,22 @@
       else {
         // No acces
         header("Location: " . $GLOBALS['config']['base_url'] . "admin/");
+      }
+    }
+
+    public function addPage() {
+      if ($this->User->checkIfClientHasAcces('admin')) {
+        if (ISSET($_POST['createPage'])) {
+          
+        }
+
+        else {
+          // Came here by excident
+        }
+      }
+
+      else {
+        // No acces
       }
     }
 
